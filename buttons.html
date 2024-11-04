@@ -1,0 +1,291 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Sales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .rock-item {
+            background: #444;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 179px;  
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .rock-item:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .rock-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #fff;
+            color: black;
+            padding: 40px;
+            border-radius: 5px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+            width: 600px;  
+            height: 370px; 
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .popup-content img {
+            width: 200px; 
+            margin-bottom: 15px;
+        }
+
+        .close {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: black;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .buy-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;  
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .buy-button:hover {
+            background: #45a049;
+        }
+
+        .testimonial {
+            margin-top: 20px;
+            text-align: center;
+            font-style: italic;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Piață de Pietre</h1>
+        <p>Vino și uită-te peste colecția noastră de pietre, calitate de nemaivăzut, pot fi prietenii tăi, dușmanii tăi sau chiar partenerii romantici,&nbsp;de&nbsp;ce&nbsp;nu?</p>
+    </header>
+
+    <main>
+        <section class="rock-item" onclick="showPopup('Piatră de pe Moldova', 'Piatră delicată, culesă de expertii nostrii, calitate de top. Acum la 19.99 RON!', 'cat1.jpg')">
+            <h2>Piatră de pe Moldova</h2>
+            <img src="cat1.jpg" alt="Moldova">
+        </section>
+
+            <section class="rock-item" onclick="showPopup('Piatră de pe Siret', 'o piatră specială, care aduce o armonie de nedescris in propria locuință. Acum la 25.99 RON!', 'cat2.jpg')">
+            <h2>Piatră de pe Siret</h2>
+            <img src="cat2.jpg" alt="Siret">
+        </section>
+
+        <section class="rock-item" onclick="showPopup('Piatră locuibilă', 'N-ai casă? Suferi de ploi și trăsnete apărând chiar în fața ochilor tăi? Dacă da, cumpărați un nou prieten care îți va oferii și&nbsp;un&nbsp;loc&nbsp;comod! Acum la 3999.99 RON! (5% discount daca cumperi si o piatră de pe siret)', 'cat3.jpg')">
+            <h2 class="h2">Piatră locuibilă</h2>
+            <img src="cat3.jpg" alt="locuibilă">
+        </section>
+        <style>
+            .h2 {
+                margin-bottom: 40px;
+                margin-top: 30px;
+            }
+        </style>
+
+        <section class="rock-item" onclick="showPopup('Ediție limitată', 'Vrei să adormi dar n-ai cu cine? Uite nu mai căuta! Este o ediție limitată, deci nu&nbsp;pierde&nbsp;șanța! Acum la 59.99 RON!', 'cat5.jpg')">
+            <h2>Piatra viselor "ediție limitată"</h2>
+            <img src="cat5.jpg" alt="limitată">
+        </section>
+
+        <section class="rock-item" onclick="showPopup('Piatră tip pernă', 'Perna ta nu e comodă? Atunci comandă una de piatră, Comfort&nbsp;100%! Acum la 119,99 RON! (reducere de 35% daca cumparati 2)', 'cat4.jpg')">
+            <h2 class="h3">Piatră tip pernă</h2>
+            <img src="cat4.jpg" alt="pernă">
+        </section>
+        <style>
+            .h3 {
+                margin-bottom: 40px;
+                margin-top: 30px;
+            }
+        </style>
+
+        <section class="rock-item" onclick="showPopup('Piatra Gucci', 'Vrei să fii VIP? Special de toți celălalți? Cumpără o piatră de lux, vei fi de 12 ori&nbsp;mai&nbsp;popular! Acum la 599.99 RON!', 'cat6.jpg')">
+            <h2 class="h4">Piatră Versacii, imprimeu Gucci "VIP"</h2>
+            <img src="cat6.jpg" alt="VIP">
+        </section>
+        <style>
+            .h4 {
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </main>
+
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">×</span>
+            <img id="popup-rock-image" src="cat1.jpg" alt="Rock Image">
+            <h3 id="popup-rock-name">Piatră de pe Moldova</h3>
+            <p id="popup-description">Piatră delicată, culesă de expertii nostrii, calitate de top.</p>
+            <button class="buy-button" onclick="showPurchaseForm()">Cumpărați!</button>
+        </div>
+    </div>
+
+    <div id="purchase-popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePurchaseForm()">×</span>
+            <h3>Confirm Your Purchase</h3>
+            <input type="text" id="name" class="form-input" placeholder="Your Name" required="">
+            <input type="email" id="email" class="form-input" placeholder="Your Email" required="">
+            <button class="buy-button" onclick="confirmPurchase()">Confirmă achiziția!</button>
+        </div>
+    </div>
+
+    <div class="testimonial">
+        <p class="daniel1"> <span class="daniel">Gigi Becalii:</span> Foarte bună peștera locuibilă, am cumpărat și o piatră de la Siret să nu mă simt singur,&nbsp;10/10,&nbsp;recomand</p>
+        <p class="robert1"><span class="robert">Robert Munteanu:</span> foarte fain, am cumparat piatra aia VIP, m-am laudat la toata clasa, recomand cu drag, e ne m-ai pomenit.</p>
+        <p class="paun1"><span class="paun">Paun Lidia:</span>Îmi place foarte mult, mi-am cumpărat piatra ediție limitată, a meritat toți banii, n-am mai dormit așa&nbsp;bine&nbsp;de&nbsp;ani.</p>
+        <p class="finish"><span class="finish1">Notiță:</span> toate pietrele sunt procurate legal, majoritatea banilor se duc la instituția internațională de hrănire a pietrelor sălbatice, deci dacă vreți să faceți un bine, aș însemna foarte mult dacă ați cumpăra orice.</p>
+    </div>
+    <style>
+        .daniel {
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .daniel1 {
+            width: 400px;
+            margin-right: 900px;
+            text-align: left;
+            margin-top: 35px;
+        }
+        .robert {
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .robert1  {
+            margin-left: 900px;
+            margin-top: 50px;
+            width: 400px;
+        }
+        .paun {
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .paun1 {
+            margin-top: 40px;
+            margin-right: 900px;
+            width: 400px;
+
+        }
+        .finish {
+            width: 300px;
+            margin-top: 70px;
+            color: #444;
+        }
+        .finish1 {
+            color: #200000;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        let currentRockName = '';
+        let currentRockImage = '';
+
+        function showPopup(rockName, description, imageUrl) {
+            currentRockName = rockName;  
+            currentRockImage = imageUrl;
+            document.getElementById('popup-rock-name').innerText = rockName;
+            document.getElementById('popup-description').innerText = description;
+            document.getElementById('popup-rock-image').src = imageUrl;
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function showPurchaseForm() {
+            closePopup();
+            document.getElementById('purchase-popup').style.display = 'flex';
+        }
+
+        function closePurchaseForm() {
+            document.getElementById('purchase-popup').style.display = 'none';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+        }
+
+        function confirmPurchase() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            alert(`Thank you, ${name}! Your purchase of ${currentRockName} has been confirmed. A confirmation has been sent to ${email}.`);
+            closePurchaseForm();
+        }
+    </script>
+
+
+</body></html>
